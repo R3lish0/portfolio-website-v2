@@ -1,0 +1,166 @@
+---
+// Add script to handle smooth scrolling
+---
+
+<div id="page-one-container">
+    <div id="title-container">
+        <div id="greeting">
+            <h3 class="anonymous-pro-bold-italic">Hi, my name is</h3>
+            <h1 class="anonymous-pro-bold">Eli Newlin,</h1>
+            <h1 class="anonymous-pro-bold">I Solve Problems</h1>
+            <p class="contact-email">Contact me at <a href="mailto:eli@wsnewlin.com">eli@wsnewlin.com</a></p>
+        </div>
+        <div id="socials">
+                <button class="socials anonymous-pro-bold">
+                    <a href = "https://www.linkedin.com/in/elias-newlin-7414a9233/">
+                        <img src="icons/linkedin-black.svg">
+                        <h3 >Linkedin</h3>
+                    </a>
+                </button>
+            <button class ="socials anonymous-pro-bold">
+                <a href = "https://github.com/R3lish0">
+                <img src="icons/github-black.svg">
+                <h3>Github</h3>
+                </a>
+            </button>
+            <button class="socials anonymous-pro-bold">
+                <a href = "resume/Eli_Newlin_Resume.pdf" download>
+                <img src="icons/resume-black.svg">
+                <h3>Resume</h3>
+                </a>
+            </button>
+        </div>
+    </div>
+    <div id="link-container">
+        <button class="link-box anonymous-pro-bold" onclick="document.getElementById('work-experience-section').scrollIntoView({behavior: 'smooth'})">
+            <h3>Work Experience</h3>
+        </button>
+        <button class="link-box anonymous-pro-bold" onclick="document.getElementById('project-section').scrollIntoView({behavior: 'smooth'})">
+            <h3>Projects</h3>
+        </button>
+        <button class="link-box anonymous-pro-bold" onclick="document.getElementById('passion-section').scrollIntoView({behavior: 'smooth'})">
+            <h3>Passions</h3>
+        </button>
+    </div>
+</div>
+
+<style>
+  #page-one-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  #title-container {
+    text-align: center;
+    width: 100%;
+  }
+
+  #greeting {
+    margin-bottom: 2rem;
+  }
+
+  #greeting h3 {
+    color: var(--accent-green);
+    margin-bottom: 1rem;
+  }
+
+  #greeting h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+  }
+
+  #socials {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .socials {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .socials a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--accent-blue);
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    color: var(--accent-blue);
+  }
+
+  .socials a h3 {
+    color: var(--accent-blue);
+  }
+
+  .socials a:hover {
+    background: var(--accent-blue);
+    color: var(--bg-color);
+  }
+
+  .socials a:hover h3,
+  .socials a:hover img {
+    filter: brightness(0.2);
+  }
+
+  .socials img {
+    width: 24px;
+    height: 24px;
+    filter: invert(80%) sepia(32%) saturate(434%) hue-rotate(127deg) brightness(95%) contrast(92%);
+  }
+
+  #link-container {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .link-box {
+    background: var(--surface-color);
+    border: 1px solid var(--accent-yellow);
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 200px;
+    text-align: center;
+  }
+
+  .link-box:hover {
+    background: var(--accent-yellow);
+  }
+
+  .link-box:hover h3 {
+    color: var(--bg-color);
+    filter: brightness(0.2);
+  }
+
+  .contact-email {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: var(--text-secondary);
+  }
+
+  .contact-email a {
+    color: var(--accent-blue);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .contact-email a:hover {
+    color: var(--accent-green);
+  }
+</style>

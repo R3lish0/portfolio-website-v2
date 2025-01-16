@@ -1,0 +1,82 @@
+---
+interface Props {
+  passion: {
+    name: string;
+    image: string;
+    description: string;
+  };
+}
+
+const { passion } = Astro.props;
+---
+
+<article class="passion-card">
+  <header>
+    <img class="card-image" src={passion.image} alt={passion.name} />
+    <h2 class="card-title">{passion.name}</h2>
+  </header>
+  
+  <div class="content">
+    <p class="description">{passion.description}</p>
+  </div>
+</article>
+
+<style>
+  .passion-card {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 2rem;
+    padding: 2rem;
+    background: var(--surface-color);
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    border: 1px solid var(--accent-red);
+    transition: transform 0.2s ease;
+    height: 100%;
+    min-height: 500px;
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .passion-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .card-image {
+    width: 160px;
+    height: 160px;
+    object-fit: contain;
+    background: var(--bg-color);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card-image img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .card-title {
+    color: var(--accent-red);
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .content {
+    display: grid;
+    gap: 1.5rem;
+    align-content: start;
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+</style> 

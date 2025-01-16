@@ -1,0 +1,70 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    /* Everforest-inspired color palette */
+    --bg-color: #2d353b;
+    --surface-color: #374145;
+    --text-primary: #d3c6aa;
+    --text-secondary: #9da9a0;
+    --accent-green: #83c092;
+    --accent-red: #e67e80;
+    --accent-yellow: #dbbc7f;
+    --accent-blue: #7fbbb3;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Anonymous Pro', monospace;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+  }
+
+  h1, h2, h3 {
+    color: var(--accent-yellow);
+  }
+
+  a {
+    color: var(--accent-blue);
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--accent-green);
+  }
+
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+</style> 

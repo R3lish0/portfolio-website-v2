@@ -1,0 +1,170 @@
+---
+interface Props {
+  company: {
+    name: string;
+    logo: string;
+    description: string;
+    position: string;
+    technologies: Array<{
+      name: string;
+      icon: string;
+    }>;
+  };
+}
+
+const { company } = Astro.props;
+---
+
+<article class="work-card">
+  <header>
+    <img class="card-image" src={company.logo} alt={`${company.name} logo`} />
+    <h2 class="card-title">{company.name}</h2>
+  </header>
+  
+  <div class="content">
+    <p class="description">{company.description}</p>
+    
+    <div class="tech-stack">
+      <h3 class="section-title">Technologies</h3>
+      <div class="tech-grid">
+        {company.technologies.map(tech => (
+          <div class="tech-item">
+            <img src={tech.icon} alt={tech.name} />
+            <span>{tech.name}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <footer class="card-footer">
+      <div class="footer-content">
+        <h3 class="section-title">Position</h3>
+        <span class="position-text">{company.position}</span>
+      </div>
+    </footer>
+  </div>
+</article>
+
+<style>
+  .work-card {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 2rem;
+    padding: 2rem;
+    background: var(--surface-color);
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    border: 1px solid var(--accent-green);
+    transition: transform 0.2s ease;
+    height: 100%;
+    min-height: 500px;
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .work-card:hover {
+    transform: translateY(-4px);
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .card-image {
+    width: 160px;
+    height: 160px;
+    object-fit: contain;
+    background: var(--bg-color);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    aspect-ratio: 1;
+  }
+
+  .card-image img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .card-title {
+    color: var(--accent-green);
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .content {
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    gap: 1.5rem;
+  }
+
+  .description {
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+
+  .section-title {
+    color: var(--accent-red);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    align-content: start;
+    grid-auto-flow: row;
+  }
+
+  .tech-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--accent-blue);
+    transition: transform 0.2s ease;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+  }
+
+  .tech-item:hover {
+    transform: translateX(4px);
+    color: var(--accent-green);
+    background: var(--bg-color);
+  }
+
+  .tech-item img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .card-footer {
+    padding-top: 1rem;
+    border-top: 1px solid var(--accent-green);
+  }
+
+  .footer-content {
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .position-text {
+    color: var(--accent-blue);
+  }
+
+  .tech-stack {
+    display: grid;
+    gap: 1.5rem;
+    height: 250px;
+  }
+
+  .section-title {
+    color: var(--accent-red);
+    font-size: 1.1rem;
+  }
+</style> 

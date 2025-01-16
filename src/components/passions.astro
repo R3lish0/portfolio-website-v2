@@ -1,0 +1,59 @@
+---
+import PassionCard from './PassionCard.astro';
+
+const passions = [
+  {
+    name: 'Linux',
+    image: 'images/tux.jpg',
+    description: 'I love to use Linux! Void, Arch, Debian, Fedora, OpenSUSE, ElementaryOS, you name it I\'ve tried it. I like to keep up with opensource and I\'m genuinely excited at not only the rate of Linux development, but the nature of choice that Linux provides.'
+  },
+  {
+    name: 'Retro Games',
+    image: 'images/snes.png',
+    description: 'Retro games are some of the most interesting pieces of software I\'ve ever seen. Back in the day of the NES or ATARI there were no powerful engines to provide an easy development experience. The way that early developers had to scrape as much power as they could to create the games they did is remarkable.'
+  },
+  {
+    name: 'LeetCode',
+    image: 'images/leet-code.png',
+    description: 'Leetcode is a pastime that I thouroughly enjoy. Not only do I get to learn new ways to solve problems and add new solutions to my toolbox, but I also get to experiment with how the code I write effects the runtime and space of my code.'
+  }
+];
+---
+
+<section class="passions" id="passion-section">
+  <h2>Passions</h2>
+  <div class="passions-grid">
+    {passions.map(passion => (
+      <PassionCard passion={passion} />
+    ))}
+  </div>
+</section>
+
+<style>
+  .passions {
+    padding: 4rem 0;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  .passions-grid {
+    display: grid;
+    gap: 2rem;
+    place-items: center;
+    width: 100%;
+  }
+
+  @media (min-width: 1024px) {
+    .passions-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

@@ -1,0 +1,71 @@
+---
+import WorkExperienceCard from './WorkExperienceCard.astro';
+
+const experiences = [
+  {
+    name: 'SoilSerdem',
+    logo: 'images/soilserdem_logo.jpg',
+    description: 'SoilSerdem is a startup based in Ames, Iowa that helps farmers reinvent the way they handle their data. To them, I owe my ability to work well within a team of developers, work with teams of people who are not developers, delegate tasks, manage deadlines, and provide a low latency product.',
+    position: 'Full Stack Developer Intern',
+    technologies: [
+      { name: 'Prisma', icon: 'icons/prisma.png' },
+      { name: 'TypeScript', icon: 'icons/typescript.png' },
+      { name: 'Docker', icon: 'icons/docker.png' },
+      { name: 'ExpressJS', icon: 'icons/expressjs.png' },
+      { name: 'MariaDB', icon: 'icons/mariadb.png' },
+      { name: 'NextJS', icon: 'icons/nextjs.png' },
+    ]
+  },
+  {
+    name: 'Big Data In A Box',
+    logo: 'images/bdib.jpg',
+    description: 'Big Data In A Box is an startup based within Iowa State University that focused on the power digital twins could provide to farmers. This was my first internship (started as research) and they provided an environment in which I could experiment with AI tools and learn to produce a fullstack webapp with cloud functionality.',
+    position: 'Intern',
+    technologies: [
+      { name: 'Python', icon: 'icons/python.png' },
+      { name: 'OpenAI', icon: 'icons/openai.png' },
+      { name: 'Azure', icon: 'icons/azure.png' },
+      { name: 'MSSQL', icon: 'icons/microsoft-sql.png' },
+    ]
+  }
+];
+---
+
+<section class="work-experience" id="work-experience-section">
+  <h1>Work Experience</h1>
+  
+  <div class="experience-grid">
+    {experiences.map(experience => (
+      <WorkExperienceCard company={experience} />
+    ))}
+  </div>
+</section>
+
+<style>
+  .work-experience {
+    padding: 4rem 0;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+
+  .experience-grid {
+    display: grid;
+    gap: 2rem;
+    place-items: center;
+    width: 100%;
+  }
+
+  @media (min-width: 1024px) {
+    .experience-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style> 
