@@ -25,7 +25,7 @@ const { project } = Astro.props;
   </header>
   
   <div class="content">
-    <p class="description">{project.description}</p>
+    <div class="description" set:html={project.description} />
     
     <div class="tech-stack">
       <h3 class="section-title">Technologies</h3>
@@ -44,7 +44,13 @@ const { project } = Astro.props;
         <h3 class="section-title">Links</h3>
         <div class="links">
           {project.links.map(link => (
-            <a href={link.url} class="link-item" target="_blank" rel="noopener">
+            <a 
+              href={link.url} 
+              class="link-item" 
+              target="_blank" 
+              rel="noopener"
+              download={link.type === 'download' ? "image" : undefined}
+            >
               <img src={link.type === 'github' ? 'icons/github-black.svg' : 
                         link.type === 'website' ? 'icons/website.png' : 
                         'icons/download.png'} 
@@ -106,9 +112,19 @@ const { project } = Astro.props;
     gap: 1.5rem;
   }
 
-  .description {
+  .description :global(p) {
     line-height: 1.6;
     color: var(--text-secondary);
+  }
+
+  .description :global(ul) {
+    margin-left: 1.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .description :global(li) {
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
   }
 
   .tech-grid {

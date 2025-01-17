@@ -1,53 +1,29 @@
 ---
 import ProjectCard from './ProjectCard.astro';
+import { getCollection } from 'astro:content';
 
-const projects = [
-  {
-    name: 'Poke327',
-    image: 'images/poke327.png',
-    description: 'Poke327 is the product of my Coms327 class (Advanced Programming Techniques). It isn\'t a complete game, but it hammered in the fundementals of C++ with pointers, curses, and implementing powerful algorithms to accomplish the projects requirements.',
-    technologies: [
-      { name: 'C/C++', icon: 'icons/c++.png' }
-    ],
-    links: [
-      { type: 'github' as const, url: 'https://github.com/R3lish0/poke327' }
-    ]
-  },
-  {
-    name: 'News++',
-    image: 'images/news-plus-plus.png',
-    description: 'News++ is a blog that I created with my friend to give us the opportunity to write down thoughts and investigate AstroJS. We were both in town at the same time and decided that it would be fun to spend some time trying to produce a resource that we had wanted to create for a while.',
-    technologies: [
-      { name: 'Astro', icon: 'icons/astro.png' },
-      { name: 'TypeScript', icon: 'icons/typescript.png' },
-      { name: 'Markdown', icon: 'icons/markdown.png' }
-    ],
-    links: [
-      { type: 'github' as const, url: 'https://github.com/R3lish0/news-plus-plus' },
-      { type: 'website' as const, url: 'https://r3lish0.github.io/news-plus-plus/' }
-    ]
-  },
-  {
-    name: 'Ray Tracer',
-    image: 'images/render.jpg',
-    description: 'In my Computer Graphics class, we have been tasked to create a Ray Tracing Engine. The picture to the left has been created by the latest build, which employs anti-aliasing, spheres, reflection/refraction, muli-threading, and more!',
-    technologies: [
-      { name: 'C/C++', icon: 'icons/c++.png' }
-    ],
-    links: [
-      { type: 'github' as const, url: 'https://github.com/R3lish0/coms336' },
-      { type: 'download' as const, url: 'images/render.jpg' }
-    ]
-  }
-];
+let projects = await getCollection('projects');
+console.log(projects);
+projects = projects.sort((a: any, b: any) => b.data.order - a.data.order);
 ---
 
 <section class="projects" id="project-section">
   <h2>Personal Projects</h2>
   <div class="projects-grid">
-    {projects.map(project => (
-      <ProjectCard project={project} />
-    ))}
+    {projects.map((project: { data: { title: any; image: any; technologies: any; links: any; }; body: any; }) => {
+      console.log(project.data.title);
+      return (
+        <ProjectCard 
+          project={{
+            name: project.data.title,
+            image: project.data.image,
+            description: project.body,
+            technologies: project.data.technologies,
+            links: project.data.links
+          }} 
+        />
+      );
+    })}
   </div>
 </section>
 

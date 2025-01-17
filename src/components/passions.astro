@@ -1,30 +1,21 @@
 ---
 import PassionCard from './PassionCard.astro';
+import { getCollection } from 'astro:content';
 
-const passions = [
-  {
-    name: 'Linux',
-    image: 'images/tux.jpg',
-    description: 'I love to use Linux! Void, Arch, Debian, Fedora, OpenSUSE, ElementaryOS, you name it I\'ve tried it. I like to keep up with opensource and I\'m genuinely excited at not only the rate of Linux development, but the nature of choice that Linux provides.'
-  },
-  {
-    name: 'Retro Games',
-    image: 'images/snes.png',
-    description: 'Retro games are some of the most interesting pieces of software I\'ve ever seen. Back in the day of the NES or ATARI there were no powerful engines to provide an easy development experience. The way that early developers had to scrape as much power as they could to create the games they did is remarkable.'
-  },
-  {
-    name: 'LeetCode',
-    image: 'images/leet-code.png',
-    description: 'Leetcode is a pastime that I thouroughly enjoy. Not only do I get to learn new ways to solve problems and add new solutions to my toolbox, but I also get to experiment with how the code I write effects the runtime and space of my code.'
-  }
-];
+const passions = await getCollection('passions');
 ---
 
 <section class="passions" id="passion-section">
   <h2>Passions</h2>
   <div class="passions-grid">
-    {passions.map(passion => (
-      <PassionCard passion={passion} />
+    {passions.map((passion: { data: { title: any; image: any; }; body: any; }) => (
+      <PassionCard 
+        passion={{
+          name: passion.data.title,
+          image: passion.data.image,
+          description: passion.body
+        }} 
+      />
     ))}
   </div>
 </section>
