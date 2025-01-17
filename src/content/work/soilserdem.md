@@ -16,4 +16,4 @@ technologies:
   - name: 'NextJS'
     icon: 'icons/nextjs.png'
 ---
-SoilSerdem is a startup based in Ames, Iowa that helps farmers reinvent the way they handle their data. To them, I owe my ability to work well within a team of developers, work with teams of people who are not developers, delegate tasks, manage deadlines, and provide a low latency product. 
+SoilSerdem is a startup based in Ames, Iowa that helps farmers reinvent the way they handle their data. To them, I owe my ability to work well within a team of developers, work with teams of people who are not developers, delegate tasks, manage deadlines, and provide a low latency product. This position has required me to handle backend, frontend, databases, docker, AWS, and I keep learning more every day. 
